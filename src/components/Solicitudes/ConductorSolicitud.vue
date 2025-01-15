@@ -1,11 +1,11 @@
 <template>
-  <q-page padding>
+  <q-page>
     <div id="map" class="map-container"></div>
   </q-page>
 </template>
 
 <script>
-import { GOOGLE_MAPS_API_KEY } from 'src/config.js'
+import { GOOGLE_MAPS_API_KEY, GOOGLE_MAPS } from 'src/config.js'
 
 export default {
   name: 'GoogleMap',
@@ -17,7 +17,7 @@ export default {
     }
   },
   mounted () {
-    this.loadGoogleMapsScript()
+    this.cargarGoogleMapsScript()
       .then(() => {
         this.initMap()
       })
@@ -26,26 +26,26 @@ export default {
       })
   },
   methods: {
-    loadGoogleMapsScript () {
+    cargarGoogleMapsScript () {
       return new Promise((resolve, reject) => {
         if (window.google && window.google.maps) {
-          resolve() // Si la API ya está cargada, resuelve la promesa
+          resolve()
           return
         }
 
-        const existingScript = document.getElementById('google-maps-script')
-        if (existingScript) {
-          existingScript.onload = resolve
-          existingScript.onerror = reject
+        const scriptExistente = document.getElementById('google-maps-script')
+        if (scriptExistente) {
+          scriptExistente.onload = resolve
+          scriptExistente.onerror = reject
           return
         }
 
         const script = document.createElement('script')
         script.id = 'google-maps-script'
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}`
+        script.src = `${GOOGLE_MAPS}/api/js?key=${GOOGLE_MAPS_API_KEY}`
         script.async = true
         script.defer = true
-
+        script.setAttribute('loading', 'async')
         script.onload = resolve
         script.onerror = reject
 
@@ -54,8 +54,8 @@ export default {
     },
     initMap () {
       const mapOptions = {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8
+        center: { lat: -16.5035401, lng: -68.1319137 },
+        zoom: 16
       }
 
       this.map = new google.maps.Map(document.getElementById('map'), mapOptions)
@@ -66,7 +66,9 @@ export default {
 
 <style scoped>
 .map-container {
-  width: 200px;
-  height: 200px;
+  margin: 10px;
+  padding: 20px;
+  width: 400px;
+  height: 400px;
 }
 </style>
