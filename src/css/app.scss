@@ -1,0 +1,88 @@
+@import './font';
+// app global css in SCSS form
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $secondary;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $primary;
+}
+
+body {
+  font-family: "Rounded_Elegance", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: $background;
+}
+
+.q-toolbar.bg-background{
+  background-color: $background !important;
+}
+
+.bg-background{
+  background-color: $background !important;
+}
+
+.q-card,.q-dialog .q-card{
+  border-radius: 20px;
+}
+
+.q-menu{
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.q-menu.dialog{
+  border-radius: 20px;
+}
+
+.q-dialog__backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px) !important;
+  -webkit-backdrop-filter: blur(2px) !important;
+}
+
+.q-field--filled .q-field__control {
+  border-radius: 10px !important;
+}
+
+.q-field--filled .q-field__control::after {
+  left: 9px;
+  right: 9px;
+}
+
+.required .q-field__label:before {
+  content:"* ";
+  font-weight: bold;
+  font-size: 20px;
+  color: $negative;
+}
+
+.baner-development{
+  float: right;
+  top: 5em;
+  right: -5em;
+  padding: 10px 20px;
+  color: white;
+  letter-spacing: 2px;
+  background: $secondary;
+  opacity: 0.7;
+  position: absolute;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 320px;
+  z-index: 8;
+  text-transform: uppercase;
+  transition: opacity .35s ease-in-out;
+  opacity: .3;
+}
